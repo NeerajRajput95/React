@@ -7,33 +7,40 @@ function App() {
       LocationOfExpenditure: "alwar,rajasthan",
       itemName: "Petrol",
       price: 100,
+      date: new Date(2000, 31, 1),
     },
     {
       LocationOfExpenditure: "jaipur,rajasthan",
       itemName: "Groceries",
       price: 200,
+      date: new Date(2000, 21, 1),
     },
     {
       LocationOfExpenditure: "udaipur,rajasthan",
       itemName: "Dinner",
       price: 300,
+      date: new Date(2000, 21, 1),
     },
     {
       LocationOfExpenditure: "jodhpur,rajasthan",
       itemName: "Movie Tickets",
       price: 150,
+      date: new Date(2000, 12, 1),
     },
   ];
   return (
-    <div className="App">
+    <div className="">
       <h1>Let's start</h1>
       {data.map((item, index) => (
-        <Expens
-          key={index}
-          item={item.itemName}
-          location={item.LocationOfExpenditure}
-          price={item.price}
-        />
+        <div className="">
+          <Expens
+            key={index}
+            item={item.itemName}
+            location={item.LocationOfExpenditure}
+            price={item.price}
+            date={item.date}
+          />
+        </div>
       ))}
     </div>
   );
