@@ -1,0 +1,14 @@
+/* Expens.css */
+
+.Expense-item{
+    display: flex; /* Use flexbox to arrange items horizontally */
+    justify-content: space-evenly; /* Distribute space evenly between items */
+    align-items: center; /* Vertically center items */
+    border: 1px solid #ccc;
+    padding: 0px;
+    margin: 0px;
+    background-color: gray;
+    border-radius: 5px;
+  }
+
+  

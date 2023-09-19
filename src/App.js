@@ -1,7 +1,7 @@
 import "./App.css";
-import Expens from "./Components/Expens";
+import Expens from "./Components/Expenes/Expens";
 
-function App() {
+const App = () => {
   let data = [
     {
       LocationOfExpenditure: "alwar,rajasthan",
@@ -44,6 +44,6 @@ function App() {
       ))}
     </div>
   );
-}
+};
 
 export default App;
