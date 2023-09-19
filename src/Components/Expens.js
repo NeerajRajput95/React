@@ -1,17 +1,12 @@
 import React from "react";
 import "./Expens.css";
-function Expens() {
-  const ExpenseItem = "Expense Items";
-  const LocationOfExpenditure = "alwar,rajasthan";
-  const itemName = "Petrol";
-  const price = 100;
+function Expens(probs) {
   return (
     <div className="ExpenesItem">
-      <div className="ExpenseItems">{ExpenseItem}</div>
-      <h3 className="">{LocationOfExpenditure}</h3>
+      <div className="ExpenseItems">{probs.item}</div>
       <div className="item">
-        <h1>{itemName} </h1>
-        <div className="price">Rs {price}</div>
+        <h3 className="">{probs.location}</h3>
+        <div className="price">Rs {probs.price}</div>
       </div>
     </div>
   );
