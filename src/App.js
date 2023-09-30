@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import Expens from "./Components/Expenes/Expens";
 
@@ -28,10 +29,18 @@ const App = () => {
       date: new Date(2000, 12, 1),
     },
   ];
+  const [value, setvalue] = useState([...data]);
+
+  const handleClick = (name) => {
+    console.log("nnnnn", name);
+    const filteredData = value.filter((data) => data.itemName !== name);
+    console.log("rrrrrrrrrrrrrrrr", filteredData);
+    setvalue(filteredData);
+  };
   return (
     <div className="">
       <h1>Let's start</h1>
-      {data.map((item, index) => (
+      {value.map((item, index) => (
         <div className="">
           <Expens
             key={index}
@@ -39,6 +48,7 @@ const App = () => {
             location={item.LocationOfExpenditure}
             price={item.price}
             date={item.date}
+            handleClick={handleClick}
           />
         </div>
       ))}

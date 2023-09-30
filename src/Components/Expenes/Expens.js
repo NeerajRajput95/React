@@ -3,10 +3,10 @@ import "./Expens.css";
 import ExpenesDetails from "./ExpenesDetails";
 import Card from "../UI/Card";
 
-const Expens = (probs) => {
+const Expens = (props) => {
   return (
     <Card className="Expense-item">
-      <ExpenesDetails Details={probs} />
+      <ExpenesDetails Details={props} />
     </Card>
   );
 };
