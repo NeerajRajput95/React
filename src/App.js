@@ -36,10 +36,13 @@ const App = () => {
     const filteredData = value.filter((data) => data.itemName !== name);
     console.log("rrrrrrrrrrrrrrrr", filteredData);
     setvalue(filteredData);
+    console.log("vvvvvvvv", value);
   };
+
   return (
     <div className="">
       <h1>Let's start</h1>
+      {console.log("bbbbbbbbbbbb", value)}
       {value.map((item, index) => (
         <div className="">
           <Expens
