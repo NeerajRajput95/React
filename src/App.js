@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Expens from "./Components/Expenes/Expens";
+import NewExpenes from "./Components/NewExpenes/NewExpenes";
 
 const App = () => {
   let data = [
@@ -41,7 +42,7 @@ const App = () => {
 
   return (
     <div className="">
-      <h1>Let's start</h1>
+      <NewExpenes />
       {console.log("bbbbbbbbbbbb", value)}
       {value.map((item, index) => (
         <div className="">
