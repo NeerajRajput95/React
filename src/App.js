@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Expens from "./Components/Expenes/Expens";
 import NewExpenes from "./Components/NewExpenes/NewExpenes";
@@ -30,6 +30,13 @@ const App = () => {
       date: new Date(2000, 12, 1),
     },
   ];
+  useEffect(() => {
+    let formData = localStorage.getItem("formData")
+      ? JSON.parse(localStorage.getItem("formData"))
+      : [];
+    console.log("formData", formData);
+    data.push(...formData);
+  }, [localStorage.getItem("formData")]);
   const [value, setvalue] = useState([...data]);
 
   const handleClick = (name) => {
