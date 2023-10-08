@@ -30,13 +30,16 @@ const App = () => {
       date: new Date(2000, 12, 1),
     },
   ];
-  useEffect(() => {
-    let formData = localStorage.getItem("formData")
-      ? JSON.parse(localStorage.getItem("formData"))
-      : [];
-    console.log("formData", formData);
-    data.push(...formData);
-  }, [localStorage.getItem("formData")]);
+  // useEffect(() => {
+  //   const formData = localStorage.getItem("formData")
+  //     ? JSON.parse(localStorage.getItem("formData"))
+  //     : [];
+
+  //   // Merge the initial data with the formData retrieved from localStorage
+  //   const mergedData = [...data, ...formData];
+  //   setvalue(mergedData);
+  // }, []); // Empty dependency array, no dependencies needed
+
   const [value, setvalue] = useState([...data]);
 
   const handleClick = (name) => {
