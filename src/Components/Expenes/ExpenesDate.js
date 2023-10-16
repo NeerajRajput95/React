@@ -1,6 +1,7 @@
 import React from "react";
 
 const ExpenesDate = (probs) => {
+  console.log("probs", probs);
   const month = probs.currentDate.date.toLocaleString("en-US", {
     month: "long",
   });

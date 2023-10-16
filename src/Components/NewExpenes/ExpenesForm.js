@@ -102,7 +102,7 @@
 
 import React, { useState } from "react";
 
-function ExpenesForm() {
+function ExpenesForm({ addValue }) {
   // Define state variable to store form input values as an object
 
   const [formData, setFormData] = useState({
@@ -124,6 +124,16 @@ function ExpenesForm() {
   };
 
   // Define a submit handler function
+  const options = {
+    weekday: "short",
+    month: "short",
+    day: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    timeZoneName: "short",
+  };
   const submitHandler = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
 
@@ -134,27 +144,19 @@ function ExpenesForm() {
     console.log("Date:", formData.date);
 
     let prevdata = localStorage.getItem("formData");
-    console.log("Previous data:", prevdata);
+    console.log("Previous date:", formData.date);
 
-    let newdata = prevdata
-      ? [
-          {
-            location: formData.location,
-            itemName: formData.title,
-            price: formData.amount,
-            date: formData.date,
-          },
-          ...JSON.parse(prevdata),
-        ]
-      : [
-          {
-            location: formData.location,
-            itemName: formData.title,
-            price: formData.amount,
-            date: formData.date,
-          },
-        ];
-    localStorage.setItem("formData", JSON.stringify(newdata));
+    let newdata = {
+      location: formData.location,
+      itemName: formData.title,
+      price: formData.amount,
+      date: formData.date.toLocaleString("en-US", options),
+    };
+    console.log("newdata:", newdata);
+
+    addValue(newdata);
+
+    // localStorage.setItem("formData", JSON.stringify(newdata));
 
     // You can also send the data to a parent component or perform other actions here
   };

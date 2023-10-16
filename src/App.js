@@ -49,10 +49,13 @@ const App = () => {
     setvalue(filteredData);
     console.log("vvvvvvvv", value);
   };
+  function addValue(value) {
+    setvalue((prev) => [value, ...prev]);
+  }
 
   return (
     <div className="">
-      <NewExpenes />
+      <NewExpenes addValue={addValue} />
       {console.log("bbbbbbbbbbbb", value)}
       {value.map((item, index) => (
         <div className="">

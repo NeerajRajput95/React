@@ -2,10 +2,11 @@ import React from "react";
 import ExpenesForm from "./ExpenesForm";
 import "./NewExpenes.css";
 
-function NewExpenes() {
+function NewExpenes({ addValue }) {
+  console.log("setvalue in ex", addValue);
   return (
     <div>
-      <ExpenesForm />
+      <ExpenesForm addValue={addValue} />
     </div>
   );
 }
