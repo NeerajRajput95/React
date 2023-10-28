@@ -4,7 +4,7 @@ import Expens from "./Components/Expenes/Expens";
 import NewExpenes from "./Components/NewExpenes/NewExpenes";
 
 const App = () => {
-  let data = [
+  let initialData = [
     {
       LocationOfExpenditure: "alwar,rajasthan",
       itemName: "Petrol",
@@ -30,45 +30,49 @@ const App = () => {
       date: new Date(2000, 12, 1),
     },
   ];
-  // useEffect(() => {
-  //   const formData = localStorage.getItem("formData")
-  //     ? JSON.parse(localStorage.getItem("formData"))
-  //     : [];
 
-  //   // Merge the initial data with the formData retrieved from localStorage
-  //   const mergedData = [...data, ...formData];
-  //   setvalue(mergedData);
-  // }, []); // Empty dependency array, no dependencies needed
-
-  const [value, setvalue] = useState([...data]);
+  const [data, setData] = useState([...initialData]);
+  const [filteredData, setFilteredData] = useState([...initialData]);
 
   const handleClick = (name) => {
-    console.log("nnnnn", name);
-    const filteredData = value.filter((data) => data.itemName !== name);
-    console.log("rrrrrrrrrrrrrrrr", filteredData);
-    setvalue(filteredData);
-    console.log("vvvvvvvv", value);
+    const updatedData = filteredData.filter((item) => item.itemName !== name);
+    setFilteredData(updatedData);
   };
+
+  const filterItems = (e) => {
+    const searchTerm = e.target.value;
+    const filteredItems = data.filter((item) =>
+      item.itemName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredData(filteredItems);
+  };
+
   function addValue(value) {
-    setvalue((prev) => [value, ...prev]);
+    setData((prev) => [value, ...prev]);
+    setFilteredData((prev) => [value, ...prev]);
   }
 
   return (
     <div className="">
       <NewExpenes addValue={addValue} />
-      {console.log("bbbbbbbbbbbb", value)}
-      {value.map((item, index) => (
-        <div className="">
-          <Expens
-            key={index}
-            item={item.itemName}
-            location={item.LocationOfExpenditure}
-            price={item.price}
-            date={item.date}
-            handleClick={handleClick}
-          />
-        </div>
-      ))}
+      <input
+        type="text"
+        placeholder="Filter items by name"
+        onChange={filterItems}
+      />
+      <div className="expenseBox">
+        {filteredData.map((item, index) => (
+          <div key={index}>
+            <Expens
+              item={item.itemName}
+              location={item.LocationOfExpenditure}
+              price={item.price}
+              date={item.date}
+              handleClick={handleClick}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

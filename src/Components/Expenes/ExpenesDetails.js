@@ -18,8 +18,6 @@ const ExpenesDetails = (props) => {
   return (
     <div>
       <div className="ExpenesItem">
-        <ExpenesDate currentDate={props.Details} />
-        {/* {console.log("xxxxxxx", title)} */}
         <div className="ExpenseItems">{title}</div>
         <div className="item">
           <h3 className="">{props.Details.location}</h3>
